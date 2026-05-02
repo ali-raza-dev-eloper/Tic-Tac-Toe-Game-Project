@@ -61,10 +61,11 @@ const showWinner = (winner) => {
     msg.innerText = `Congratulations, Winner is ${winner}`;
     msgcont.classList.remove("hide");
     disableBoxes();
-    confetti();
+    
 };
 
 const checkWinner = () => {
+    let isWinner = false;
     for ( let pattern of winPatterns) {
        let pv1 = boxes[pattern[0]].innerText;
        let pv2 = boxes[pattern[1]].innerText;
@@ -73,10 +74,35 @@ const checkWinner = () => {
        if(pv1 != "" && pv2 != "" && pv3 !=  "" ){
           if(pv1 === pv2 && pv2 === pv3){
             showWinner(pv1);
+            isWinner = true; 
+            return; 
           }
        }
     }
+
+
+// --- DRAW KA ASAN LOGIC YAHAN HAI ---
+    // Agar poora loop chal gaya aur isWinner abhi bhi false hai
+    if (!isWinner) {
+        let allFilled = true;
+        for (let box of boxes) {
+            if (box.innerText === "") {
+                allFilled = false; // Agar aik bhi dabba khali hai to draw nahi hua
+            }
+        }
+
+        if (allFilled) {
+            msg.innerText = "Game was a Draw! 🤝"; // Message badal diya
+            msgcont.classList.remove("hide"); // Dabba dikha diya
+            disableBoxes(); // Game rok di
+        }
+    }
+    
 };
+
+
+
 
 newgamebtn.addEventListener("click", resetGame);
 resetbtn.addEventListener("click", resetGame);
+
