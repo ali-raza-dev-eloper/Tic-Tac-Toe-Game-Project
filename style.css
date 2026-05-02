@@ -153,9 +153,9 @@ h1{
         gap: 8px; /* gap between boxes */
     }
     h1{
-        font-size: 15px;
         margin-bottom: 5px;
         position: relative;
+        font-size: 15px;
     }
 
     .box {
