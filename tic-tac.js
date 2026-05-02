@@ -81,20 +81,19 @@ const checkWinner = () => {
     }
 
 
-// --- DRAW KA ASAN LOGIC YAHAN HAI ---
-    // Agar poora loop chal gaya aur isWinner abhi bhi false hai
+
     if (!isWinner) {
         let allFilled = true;
         for (let box of boxes) {
             if (box.innerText === "") {
-                allFilled = false; // Agar aik bhi dabba khali hai to draw nahi hua
+                allFilled = false; 
             }
         }
 
         if (allFilled) {
-            msg.innerText = "Game was a Draw! 🤝"; // Message badal diya
-            msgcont.classList.remove("hide"); // Dabba dikha diya
-            disableBoxes(); // Game rok di
+            msg.innerText = "Game was a Draw! 🤝"; 
+            msgcont.classList.remove("hide"); 
+            disableBoxes(); 
         }
     }
     
